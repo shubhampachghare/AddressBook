@@ -1,34 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AdressBookSystem
 {
-    class AdressBookBuilder
+    class Program
     {
-        public List<Contact> contactList;
-        public AdressBookBuilder()
+        static void Main(string[] args)
         {
-            this.contactList = new List<Contact>();
-        }
-        public void AddContact(String fName, String lName, String address, String city, String state, String zip, String phoneNumber, String email)
-        {
-            Contact contact = new Contact(fName, lName, address, city, state, zip, phoneNumber, email);
-            contactList.Add(contact);
-        }
-        public void displayContact()
-        {
-            foreach (Contact contact in contactList)
+            AdressBookBuilder adressBookBuilder = new AdressBookBuilder();
+            while (true)
             {
-                Console.WriteLine("\nFirst name = " + contact.fName);
-                Console.WriteLine("Last name = " + contact.lName);
-                Console.WriteLine("Address = " + contact.address);
-                Console.WriteLine("city = " + contact.city);
-                Console.WriteLine("state = " + contact.state);
-                Console.WriteLine("zip = " + contact.zip);
-                Console.WriteLine("phoneNumber = " + contact.phoneNumber);
-                Console.WriteLine("email = " + contact.email);
-
+                Console.WriteLine("\n 1 for Add Contact \n 2 for Edit Existing Contact \n 3 for exit ");
+                int choise = Convert.ToInt32(Console.ReadLine());
+                switch (choise)
+                {
+                    case 1:
+                        Console.WriteLine("Welcome To  Book System!");
+                        Program program = new Program();
+                        Console.WriteLine("Enter first name = ");
+                        string fName = Console.ReadLine();
+                        Console.WriteLine("Enter last name = ");
+                        string lName = Console.ReadLine();
+                        Console.WriteLine("Enter address= ");
+                        String address = Console.ReadLine();
+                        Console.WriteLine("Enter city= ");
+                        String city = Console.ReadLine();
+                        Console.WriteLine("Enter state= ");
+                        String state = Console.ReadLine();
+                        Console.WriteLine("Enter zip= ");
+                        String zip = Console.ReadLine();
+                        Console.WriteLine("Enter phoneNumber= ");
+                        String phoneNumber = Console.ReadLine();
+                        Console.WriteLine("Enter email= ");
+                        String email = Console.ReadLine();
+                        adressBookBuilder.addContact(fName, lName, address, city, state, zip, phoneNumber, email);
+                        adressBookBuilder.displayContact();
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter first name = ");
+                        string seachFirstName = Console.ReadLine();
+                        adressBookBuilder.editContact(seachFirstName);
+                        adressBookBuilder.displayContact();
+                        break;
+                    case 3:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Enter The Valid Choise");
+                        break;
+                }
             }
         }
     }
