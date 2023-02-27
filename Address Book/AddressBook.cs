@@ -1,24 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-class Address
+namespace AdressBookSystem
 {
-    public string name;
-    public string address;
-    public string city;
-    public string state;
-    public string zip;
-    public string phoneNumber;
-    public string email;
-
-
-    public Address(string name, string address, string city, string state, string zip, string phoneNumber, string email)
+    class AdressBookBuilder
     {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        public List<Contact> contactList;
+        public AdressBookBuilder()
+        {
+            this.contactList = new List<Contact>();
+        }
+        public void AddContact(String fName, String lName, String address, String city, String state, String zip, String phoneNumber, String email)
+        {
+            Contact contact = new Contact(fName, lName, address, city, state, zip, phoneNumber, email);
+            contactList.Add(contact);
+        }
+        public void displayContact()
+        {
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("\nFirst name = " + contact.fName);
+                Console.WriteLine("Last name = " + contact.lName);
+                Console.WriteLine("Address = " + contact.address);
+                Console.WriteLine("city = " + contact.city);
+                Console.WriteLine("state = " + contact.state);
+                Console.WriteLine("zip = " + contact.zip);
+                Console.WriteLine("phoneNumber = " + contact.phoneNumber);
+                Console.WriteLine("email = " + contact.email);
+
+            }
+        }
     }
 }
